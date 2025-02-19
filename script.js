@@ -1,8 +1,9 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const message = document.getElementById("message");
+const circleOverlay = document.getElementById("circleOverlay");
 
-// 1) "No" Button moves away on mouseover
+// "No" Button - Move away on mouseover
 noBtn.addEventListener("mouseover", () => {
   const newX = Math.random() * (window.innerWidth - 100);
   const newY = Math.random() * (window.innerHeight - 100);
@@ -10,16 +11,16 @@ noBtn.addEventListener("mouseover", () => {
   noBtn.style.top = `${newY}px`;
 });
 
-// 2) "Yes" Button Click -> Fade out & Redirect to page2.html
+// "Yes" Button - Show message + Circle Overlay Expand + Redirect
 yesBtn.addEventListener("click", () => {
-  // Optional: show a quick "I love you too" before redirect
+  // Optional immediate message
   message.innerHTML = "I love you too! ❤️";
   message.style.opacity = "1";
 
-  // Add fade-out class to .container
-  document.querySelector(".container").classList.add("fade-out");
+  // Trigger circle expand animation
+  circleOverlay.classList.add("expand");
 
-  // After fade-out animation ends (~1s), redirect
+  // Wait until circle covers screen (~1s), then redirect
   setTimeout(() => {
     window.location.href = "page2.html";
   }, 1000);
