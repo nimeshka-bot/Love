@@ -1,213 +1,64 @@
-/* Google Font Import (Optional) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body */
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #ffe6e6;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  overflow: hidden; /* Hide "No" btn if it goes out of bounds */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffe4e1;
+    margin: 0;
+    padding: 0;
 }
 
-/* Circle Overlay for Page Transition */
-.circle-overlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 200vmax;       /* large enough to cover screen on scale */
-  height: 200vmax;
-  background: radial-gradient(circle, #ff4d4d 0%, #ff1a1a 80%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  z-index: 9999;
-  pointer-events: none;
-  /* animation will be triggered via JS */
-}
-
-.circle-overlay.expand {
-  animation: circleExpand 1s forwards ease-in-out;
-}
-
-@keyframes circleExpand {
-  to {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-/* Container (index.html) */
 .container {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  animation: pop-in 0.5s ease-out;
+    margin-top: 50px;
 }
 
-@keyframes pop-in {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Heading */
 h1 {
-  font-size: 32px;
-  color: #ff4d4d;
-  margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #ff4d4d;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Fade-in animation */
-.fade-in {
-  animation: fadeIn 2s ease-in-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.image {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    animation: bounce 1.5s infinite;
 }
 
-/* Bear container bounce */
-.bear-container {
-  margin: 10px 0;
-  animation: bounce 2s infinite;
-}
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-.bear-container img {
-  width: 150px;
-  transition: transform 0.3s ease;
-}
-.bear-container img:hover {
-  transform: scale(1.05);
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-/* Buttons */
 .buttons {
-  margin-top: 20px;
-  position: relative; /* for absolute "No" btn */
+    margin-top: 20px;
 }
+
 button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  margin: 0 10px;
-  transition: transform 0.3s ease, background 0.3s ease;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Yes Button */
 #yesBtn {
-  background-color: #ff4d4d;
-  color: white;
+    background-color: #ff69b4;
+    color: white;
 }
+
 #yesBtn:hover {
-  transform: scale(1.1);
-  background: #ff1a1a;
+    background-color: #ff1493;
+    transform: scale(1.1);
 }
 
-/* No Button */
 #noBtn {
-  background-color: #ccc;
-  color: black;
-  position: absolute;
+    background-color: #ff4d4d;
+    color: white;
+    position: absolute;
 }
+
 #noBtn:hover {
-  background: #aaa;
-}
-
-/* Love Message */
-#message {
-  font-size: 22px;
-  color: #ff4d4d;
-  margin-top: 15px;
-  font-weight: bold;
-  opacity: 0; /* hidden at start */
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* -------------------
-   Page2 (second page)
-   ------------------- */
-.page2-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: #ffe6e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  flex-direction: column;
-}
-
-.page2-container h1 {
-  font-size: 40px;
-  color: #ff4d4d;
-  animation: fadeIn 1.5s ease-in-out forwards;
-}
-
-/* Floating hearts wrapper */
-.floating-hearts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Heart shape using clip-path */
-.heart {
-  width: 40px;
-  height: 40px;
-  background: red;
-  position: absolute;
-  bottom: -50px; /* start below screen */
-  animation: floatUp 5s linear infinite;
-  clip-path: polygon(
-    50% 0%,
-    61% 19%,
-    81% 19%,
-    69% 36%,
-    73% 55%,
-    50% 75%,
-    27% 55%,
-    31% 36%,
-    19% 19%,
-    39% 19%
-  );
-  opacity: 0.8;
-}
-
-/* Keyframes for hearts floating upwards */
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-110vh) scale(0.5);
-    opacity: 0;
-  }
+    background-color: #ff0000;
 }
