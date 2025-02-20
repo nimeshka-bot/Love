@@ -1,4 +1,4 @@
-/* Import a Google Font (optional) */
+/* Import Google Font (optional) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 * {
@@ -43,9 +43,10 @@ h1 {
   50% { transform: translateY(-10px); }
 }
 
-/* Buttons styling */
+/* Buttons container */
 .buttons {
   margin-top: 20px;
+  position: relative;
 }
 
 button {
@@ -68,11 +69,13 @@ button {
   transform: scale(1.1);
 }
 
-/* "No" button will move when hovered */
+/* "No" Button positioned absolutely */
 #noBtn {
   background-color: #ff4d4d;
   color: white;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #noBtn:hover {
